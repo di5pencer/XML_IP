@@ -1,6 +1,16 @@
 # XML_IP
-XML Parser for Masscan files
+###Host name lookup from MASSCAN XML
 
-Needs work
+Takes an XML file from [MASSCAN] and runs a host name lookup on it using sockets.
 
-Load an XML called "template.xml" into the same directory and run script. Will output a CSV
+Needs work /error handling etc.
+
+Load an XML called "template.xml" into the same directory and run script. Will output a CSV of results into the same 
+directory.
+
+
+
+
+
+
+[MASSCAN]: https://github.com/robertdavidgraham/masscan
