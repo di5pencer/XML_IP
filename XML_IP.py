@@ -3,14 +3,15 @@ from lxml import etree
 import socket
 from itertools import zip_longest
 import csv
+import sys
 
+#not this one...
+#file_to_open = os.path.join("template.xml")
 
-# script_path = os.getcwd()
-# print(script_path)
-
-file_to_open = os.path.join("template.xml")
+file_to_open =os.path.join(sys.path[0], 'template.xml')
 
 f = open(file_to_open)
+print(file_to_open)
 
 #Set up some lists
 addresses=[]
