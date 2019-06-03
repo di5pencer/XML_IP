@@ -5,9 +5,9 @@ Takes an XML file from [MASSCAN] and runs a host name lookup on it using sockets
 
 Needs work /error handling etc.
 
-Load an XML called "template.xml" into the same directory and run script. Will output a CSV of results into the same 
-directory.
-
+Place XML's in the same folder as this script and run script (prefferably with Python 3). A CSV of results
+will be output in the same directory. The script can handle multiple
+files at the same time. 
 
 
 
