@@ -69,6 +69,7 @@ for y in addresses:
         #print(host_name)
     except:
         names.append("Failed")
+        print("\x1b[1;31;40m" +str(y) + " : Failed lookup \033[0;0m")
         pass
 
 
