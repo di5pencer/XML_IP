@@ -1,3 +1,8 @@
+## Bulk domain name lookup tool for MASSCAN XML Files.
+## Place XML's in the same directory at this file and run the script
+## Output file will be in the same directory
+## Utilises sockets for lookups and can handle multiple input files.
+
 import os
 from lxml import etree
 import socket
@@ -5,6 +10,7 @@ from itertools import zip_longest
 import csv
 import sys
 
+#Setup directory
 cwd = os.getcwd()
 files= os.listdir(cwd)
 
@@ -49,41 +55,30 @@ for xml in xmls:
         print("\x1b[1;31;40m" +str(xml) +" Skipped due to error in file \033[0;0m")
         pass
 
-
-
-
-
-    #confirm it worked.
+#confirm it worked.
 #print("The addresses are: " +str(addresses))
 
 
-#Name lookup with sockets
-for y in addresses:
-    print(y)
+#Name lookup using sockets
+for address in addresses:
+    print(address)
     #Attempt get host, writes line - Failed if it didnt work.
     try:
-        host_name = socket.gethostbyaddr(y)
+        host_name = socket.gethostbyaddr(address)
         a = host_name[0]
         names.append(a)
         print(a)
         #print(host_name)
     except:
         names.append("Failed")
-        print("\x1b[1;31;40m" +str(y) + " : Failed lookup \033[0;0m")
+        print("\x1b[1;31;40m" + str(address) + " : Failed lookup \033[0;0m")
         pass
-
-
-#debug
-# print(names)
-# print("rows")
-# print(rows)
-
 
 #write a CSV
 print("")
-print ("Exporting a CSV")
+print ("Exporting CSV")
 export_data = zip_longest(*rows, fillvalue = '')
-with open('the_ip.csv', 'w', encoding="ISO-8859-1", newline='') as myfile:
+with open('Output.csv', 'w', encoding="ISO-8859-1", newline='') as myfile:
     wr = csv.writer(myfile)
     wr.writerow(("IP", "Name", "Input filename"))
     wr.writerows(export_data)
